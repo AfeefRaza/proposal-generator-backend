@@ -7,7 +7,7 @@ const {Configuration, OpenAIApi} = require('openai')
 require('dotenv').config();
 
 const API_KEY = process.env.OPENAI_API_KEY
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3001
 
 const config = new Configuration({
     apiKey: API_KEY
