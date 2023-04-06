@@ -8,6 +8,8 @@ require('dotenv').config();
 
 const API_KEY = process.env.OPENAI_API_KEY
 const PORT = process.env.PORT || 3001
+const COR_URL = process.env.COR_URL
+  
 
 const config = new Configuration({
     apiKey: API_KEY
@@ -15,7 +17,9 @@ const config = new Configuration({
 const openai = new OpenAIApi(config)
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    origin: COR_URL
+  }));
 
 app.post('/chat', async (req,res) =>{
     const {name,
